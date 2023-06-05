@@ -1,4 +1,4 @@
-# Real Image Denoising via Guided Residual Estimation and Noise Correction (GrencNet)
+# Enhanced Latent Space Blind Model for Real Image Denoising via Alternative Optimization (NeurIPS 2022)
 
 Our experiments are done with:
 
