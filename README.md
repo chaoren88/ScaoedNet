@@ -13,7 +13,8 @@ Our experiments are done with:
 ![Network Structure](figure/Network_Structure.png)
 
 ### Result
-
+![Denoising results on DND.png](figure/Denoising_results_on_DND.png)
+![Denoising results on SIDD.png](figure/Denoising_results_on_SIDD.png)
 
 
 ### Test on SIDD Validation
