@@ -7,7 +7,7 @@ from skimage.metrics import peak_signal_noise_ratio as compare_psnr
 from skimage.metrics import structural_similarity as compare_ssim
 
 
-checkpoint = torch.load('./model/SIDD_39.48_0.9186.pth')
+checkpoint = torch.load('./model/model_SIDD_DND.pth')
 model = DN().cuda()
 model.load_state_dict(checkpoint)
 model.eval()
