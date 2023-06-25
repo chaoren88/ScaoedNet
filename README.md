@@ -10,7 +10,7 @@ Our experiments are done with:
 
 
 ### Network Structure
-
+![Network Structure](./figure/Network Structure.png)
 
 ### Result
 
