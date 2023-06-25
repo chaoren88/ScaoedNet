@@ -8,7 +8,6 @@ class BasicConv(nn.Module):
         self.out_channels = out_planes
         self.conv = nn.Conv2d(in_planes, out_planes, kernel_size=kernel_size, stride=stride, padding=padding, dilation=dilation, groups=groups, bias=bias)
         self.bn = nn.BatchNorm2d(out_planes,eps=1e-5, momentum=0.01, affine=True) if bn else None
-        # self.relu = nn.LeakyReLU(0.2, True) if relu else None
         self.relu = nn.ReLU(inplace=True) if relu else None
 
     def forward(self, x):
@@ -21,14 +20,6 @@ class BasicConv(nn.Module):
 
 
 def pixel_unshuffle(input, upscale_factor):
-    r"""Rearranges elements in a Tensor of shape :math:`(C, rH, rW)` to a
-    tensor of shape :math:`(*, r^2C, H, W)`.
-    Authors:
-        Zhaoyi Yan, https://github.com/Zhaoyi-Yan
-        Kai Zhang, https://github.com/cszn/FFDNet
-    Date:
-        01/Jan/2019
-    """
     batch_size, channels, in_height, in_width = input.size()
 
     out_height = in_height // upscale_factor
@@ -42,16 +33,8 @@ def pixel_unshuffle(input, upscale_factor):
     unshuffle_out = input_view.permute(0, 1, 3, 5, 2, 4).contiguous()
     return unshuffle_out.view(batch_size, channels, out_height, out_width)
 
-class PixelUnShuffle(nn.Module):
-    r"""Rearranges elements in a Tensor of shape :math:`(C, rH, rW)` to a
-    tensor of shape :math:`(*, r^2C, H, W)`.
-    Authors:
-        Zhaoyi Yan, https://github.com/Zhaoyi-Yan
-        Kai Zhang, https://github.com/cszn/FFDNet
-    Date:
-        01/Jan/2019
-    """
 
+class PixelUnShuffle(nn.Module):
     def __init__(self, upscale_factor):
         super(PixelUnShuffle, self).__init__()
         self.upscale_factor = upscale_factor
@@ -324,7 +307,7 @@ class DN(nn.Module):
         self.T = T
         self.DE_Net = DE_Net()
         self.ini_DE_Net = ini_DE_Net(in_nc=3, nf=nf)
-        self.RE_Net = RE_Net()
+        self.RE_Net = RE_Net() # G-Module implementation in RE_Net
 
         self.tail = nn.Sequential(
             BasicConv(nf, out_nc*4, 3, stride=1, padding=(3 - 1) // 2, relu=False)
