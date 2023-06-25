@@ -18,7 +18,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 num_pch = 100
 
 
-model_list = ['./model/JPEG_Nam_41.41_0.9762.pth']
+model_list = ['./model/model_NAM.pth']
 
 mat_path = './dataset/NAM_patch.mat'
 
