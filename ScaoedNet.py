@@ -307,7 +307,7 @@ class DN(nn.Module):
         self.T = T
         self.DE_Net = DE_Net()
         self.ini_DE_Net = ini_DE_Net(in_nc=3, nf=nf)
-        self.RE_Net = RE_Net() # G-Module is implementated in RE_Net
+        self.RE_Net = RE_Net() # G-Module is implemented in RE_Net
 
         self.tail = nn.Sequential(
             BasicConv(nf, out_nc*4, 3, stride=1, padding=(3 - 1) // 2, relu=False)
